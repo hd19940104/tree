@@ -1,6 +1,7 @@
 package com.zixue.project;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -21,6 +22,38 @@ public class DemoStack {
 
 
     }
+
+    /**
+     * 基于 linkedList
+     */
+    static class StackByLinkedList<T>{
+
+        private LinkedList<T>  linkedList =new LinkedList<>();
+
+        //入栈
+        public synchronized   void push(T t){
+            linkedList.addFirst(t);
+        }
+        //出栈
+        public synchronized T pop(){
+            return linkedList.removeFirst();
+        }
+        //栈顶元素
+        public synchronized T peek(){
+            T t= null;
+            if (!linkedList.isEmpty()){
+                t=linkedList.getFirst();
+            }
+            return  t;
+
+        }
+
+        public synchronized boolean isEmpty(){
+            return linkedList.isEmpty();
+        }
+
+    }
+
     /**
      * 基于 链表
      */
